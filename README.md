@@ -1,6 +1,6 @@
 # tap-completed
 
-**Detect when [TAP](https://testanything.org/) output has completed.** Normally with [`tap-parser`](https://github.com/tapjs/tap-parser) the `completed` event fires only when the stream ends. This module detects and waits for the expected number of assertions and then ends the stream. This is an updated and API-compatible version of [`tap-finished`](https://github.com/substack/tap-finished); see differences below.
+**Detect when [TAP](https://testanything.org/) output has completed.** Normally with [`tap-parser`](https://github.com/tapjs/tap-parser) the `complete` event fires only when the stream ends. This module detects and waits for the expected number of assertions and then ends the stream. This is an updated and API-compatible version of [`tap-finished`](https://github.com/substack/tap-finished); see differences below.
 
 [![npm status](http://img.shields.io/npm/v/tap-completed.svg)](https://www.npmjs.org/package/tap-completed)
 [![node](https://img.shields.io/node/v/tap-completed.svg)](https://www.npmjs.org/package/tap-completed)
