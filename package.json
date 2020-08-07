@@ -1,0 +1,34 @@
+{
+  "name": "tap-completed",
+  "version": "0.0.0",
+  "description": "Detect when TAP output has completed",
+  "license": "MIT",
+  "author": "Vincent Weevers",
+  "scripts": {
+    "test": "standard && nyc tape test/*.js"
+  },
+  "files": [
+    "index.js"
+  ],
+  "dependencies": {
+    "tap-parser": "^10.1.0"
+  },
+  "devDependencies": {
+    "nyc": "^15.1.0",
+    "standard": "^14.3.4",
+    "tape": "^5.0.1"
+  },
+  "keywords": [
+    "complete",
+    "minipass",
+    "stream",
+    "tap",
+    "test"
+  ],
+  "repository": "vweevers/tap-completed",
+  "bugs": "https://github.com/vweevers/tap-completed/issues",
+  "homepage": "https://github.com/vweevers/tap-completed",
+  "engines": {
+    "node": ">=10.2"
+  }
+}
