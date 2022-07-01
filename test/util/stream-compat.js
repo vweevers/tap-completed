@@ -2,29 +2,32 @@
 
 module.exports = function (t, stream) {
   const events = ['finish', 'end', 'error', 'complete', 'results']
+  let closed = false
+
+  events.forEach(addListener)
 
   stream.on('close', function () {
-    events.forEach(addListener)
+    closed = true
 
     process.nextTick(function () {
-      process.nextTick(assert)
+      process.nextTick(hasListeners)
     })
   })
 
   function addListener (event) {
-    stream.on(event, fail)
+    stream.on(event, notClosed)
   }
 
   function hasListener (event) {
-    return stream.listeners(event).includes(fail)
+    return stream.listeners(event).includes(notClosed)
   }
 
-  function fail () {
-    t.fail('event after close')
+  function notClosed () {
+    if (closed) t.fail('event after close')
   }
 
-  function assert () {
+  function hasListeners () {
     // Also check that removeListeners() wasn't called
-    t.ok(events.every(hasListener), 'closed')
+    t.ok(events.every(hasListener))
   }
 }
