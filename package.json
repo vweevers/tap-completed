@@ -11,7 +11,7 @@
     "index.js"
   ],
   "dependencies": {
-    "minipass": "3.1.6",
+    "minipass": "3.3.6",
     "tap-parser": "^10.1.0"
   },
   "devDependencies": {
