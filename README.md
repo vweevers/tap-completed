@@ -4,8 +4,9 @@
 
 [![npm status](http://img.shields.io/npm/v/tap-completed.svg)](https://www.npmjs.org/package/tap-completed)
 [![node](https://img.shields.io/node/v/tap-completed.svg)](https://www.npmjs.org/package/tap-completed)
-[![Travis build status](https://img.shields.io/travis/com/vweevers/tap-completed.svg?label=travis)](http://travis-ci.com/vweevers/tap-completed)
-[![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
+[![Test](https://img.shields.io/github/actions/workflow/status/vweevers/tap-completed/test.yml?label=test)](https://github.com/vweevers/tap-completed/actions/workflows/test.yml)
+[![Standard](https://img.shields.io/badge/standard-informational?logo=javascript&logoColor=fff)](https://standardjs.com)
+[![Common Changelog](https://common-changelog.org/badge.svg)](https://common-changelog.org)
 
 ## Usage
 
