@@ -2,7 +2,6 @@
 
 const test = require('tape')
 const complete = require('..')
-const compat = require('./util/stream-compat')
 const template = [
   'TAP version 13',
   '# normal',
@@ -21,7 +20,7 @@ const template = [
 ]
 
 test('normal end', function (t) {
-  t.plan(7)
+  t.plan(6)
 
   let closed = false
 
@@ -39,8 +38,6 @@ test('normal end', function (t) {
     t.pass('closed')
   })
 
-  compat(t, stream)
-
   const iv = setInterval(function () {
     if (lines.length === 0) {
       clearInterval(iv)
@@ -53,7 +50,7 @@ test('normal end', function (t) {
 })
 
 test('normal end, immediately', function (t) {
-  t.plan(6)
+  t.plan(5)
 
   let closed = false
 
@@ -63,8 +60,6 @@ test('normal end, immediately', function (t) {
     t.is(results.fail, 1)
     t.is(results.ok, false)
   })
-
-  compat(t, stream)
 
   stream.on('close', function () {
     closed = true
@@ -76,7 +71,7 @@ test('normal end, immediately', function (t) {
 })
 
 test('normal end, with complete event', function (t) {
-  t.plan(7)
+  t.plan(6)
 
   let closed = false
 
@@ -93,8 +88,6 @@ test('normal end, with complete event', function (t) {
     closed = true
     t.pass('closed')
   })
-
-  compat(t, stream)
 
   const iv = setInterval(function () {
     if (lines.length === 0) {

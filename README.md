@@ -16,14 +16,17 @@ const ws = completed(function (results) {
   console.log(results)
 })
 
-tap.pipe(ws)
+ws.write('TAP version 13')
+ws.write('# my test')
+ws.write('ok 1 hello world')
+ws.write('ok 2 should be equal')
+ws.write('1..2')
 ```
 
 ## Differences from `tap-finished`
 
-- Upgraded `tap-parser` from v0.2.0 to v10
+- Upgraded `tap-parser` from 0.2.0 to 18
 - Incorporates a fix by Julian Gruber ([substack/tap-finished#6](https://github.com/substack/tap-finished/pull/6))
-- Behaves like [a modern stream](https://github.com/vweevers/on-stream-close) in that it has a `destroy([err])` method and always emits a `'close'` event
 - The `wait` period (see below) resets on a new incoming line.
 
 ## API
@@ -40,6 +43,8 @@ const ws = completed().on('complete', callback)
 Options:
 
 - `wait` (number, default 1000): how long to wait for more output (like diagnostics) after the end was detected.
+
+The stream is unfortunately not compatible with Node.js streams; it's best to treat it as its own interface and to read the source.
 
 ## Install
 

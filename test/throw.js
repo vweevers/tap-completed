@@ -2,7 +2,6 @@
 
 const test = require('tape')
 const complete = require('..')
-const compat = require('./util/stream-compat')
 const template = [
   'TAP version 13',
   '# throw',
@@ -18,7 +17,7 @@ const template = [
 
 for (const args of [[{ wait: 1000 }], [null], []]) {
   test('throw with ' + JSON.stringify(args), function (t) {
-    t.plan(8)
+    t.plan(7)
 
     let done = false
     let closed = false
@@ -32,8 +31,6 @@ for (const args of [[{ wait: 1000 }], [null], []]) {
       t.is(results.ok, false)
       t.is(lines.length, 0)
     })
-
-    compat(t, stream)
 
     stream.on('close', function () {
       closed = true

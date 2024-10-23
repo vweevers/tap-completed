@@ -2,7 +2,6 @@
 
 const test = require('tape')
 const complete = require('..')
-const compat = require('./util/stream-compat')
 const lines = [
   'TAP version 13',
   '# ok',
@@ -14,7 +13,7 @@ const lines = [
 ]
 
 test('ok', function (t) {
-  t.plan(8)
+  t.plan(7)
 
   let done = false
   let closed = false
@@ -27,8 +26,6 @@ test('ok', function (t) {
     t.is(results.ok, true)
     t.is(lines.length, 2)
   })
-
-  compat(t, stream)
 
   stream.on('close', function () {
     closed = true
