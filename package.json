@@ -14,8 +14,8 @@
     "tap-parser": "^18.0.0"
   },
   "devDependencies": {
-    "nyc": "^15.1.0",
-    "standard": "^14.3.4",
+    "nyc": "^17.1.0",
+    "standard": "^17.1.2",
     "tape": "^5.0.1"
   },
   "keywords": [
