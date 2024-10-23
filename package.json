@@ -8,7 +8,8 @@
     "test": "standard && nyc tape test/*.js"
   },
   "files": [
-    "index.js"
+    "index.js",
+    "CHANGELOG.md"
   ],
   "dependencies": {
     "tap-parser": "^18.0.0"
@@ -25,7 +26,10 @@
     "tap",
     "test"
   ],
-  "repository": "vweevers/tap-completed",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vweevers/tap-completed.git"
+  },
   "bugs": "https://github.com/vweevers/tap-completed/issues",
   "homepage": "https://github.com/vweevers/tap-completed",
   "engines": {
