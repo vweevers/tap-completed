@@ -56,4 +56,4 @@ npm install tap-completed
 
 ## License
 
-[MIT](LICENSE.md) © 2013-present James Halliday, 2020-present Vincent Weevers.
+[MIT](LICENSE)
