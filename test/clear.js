@@ -2,7 +2,6 @@
 
 const test = require('tape')
 const complete = require('..')
-const compat = require('./util/stream-compat')
 const template = [
   'TAP version 13',
   '# destroy timer',
@@ -14,14 +13,16 @@ const template = [
 ]
 
 test('destroy() clears timer', function (t) {
-  t.plan(2)
+  t.plan(5)
 
   const lines = template.slice()
   const stream = complete({ wait: 5e6 }, function (results) {
-    t.fail('should not complete')
+    // Since tap-completed 2, destroy() does the same as end() if completed
+    t.is(results.pass, 2, 'pass')
+    t.is(results.fail, 0, 'fail')
+    t.is(results.ok, true, 'ok')
+    t.is(lines.length, 0)
   })
-
-  compat(t, stream)
 
   stream.on('error', function () {
     t.fail('should not error')
@@ -42,7 +43,7 @@ test('destroy() clears timer', function (t) {
 })
 
 test('end() clears timer', function (t) {
-  t.plan(6)
+  t.plan(5)
 
   const lines = template.slice()
   const stream = complete({ wait: 5e6 }, function (results) {
@@ -51,8 +52,6 @@ test('end() clears timer', function (t) {
     t.is(results.ok, true, 'ok')
     t.is(lines.length, 0)
   })
-
-  compat(t, stream)
 
   stream.on('error', function () {
     t.fail('should not error')

@@ -11,8 +11,7 @@
     "index.js"
   ],
   "dependencies": {
-    "minipass": "3.1.6",
-    "tap-parser": "^10.1.0"
+    "tap-parser": "^18.0.0"
   },
   "devDependencies": {
     "nyc": "^15.1.0",
@@ -30,6 +29,6 @@
   "bugs": "https://github.com/vweevers/tap-completed/issues",
   "homepage": "https://github.com/vweevers/tap-completed",
   "engines": {
-    "node": ">=10.2"
+    "node": ">=20"
   }
 }

@@ -1,6 +1,6 @@
 'use strict'
 
-const Parser = require('tap-parser')
+const { Parser } = require('tap-parser')
 
 module.exports = function (options, callback) {
   if (typeof options === 'function') {
@@ -10,7 +10,6 @@ module.exports = function (options, callback) {
     options = {}
   }
 
-  // This is a minipass stream
   const p = new Parser()
   const end = p.end.bind(p)
   const wait = options.wait != null ? options.wait : 1e3
@@ -22,28 +21,20 @@ module.exports = function (options, callback) {
   p.on('assert', onassert)
   p.on('plan', onplan)
   p.on('complete', oncomplete)
+  p.once('close', onclose)
 
-  // Called by minipass on .destroy() and by us on complete
-  p.close = function () {
+  return p
+
+  function onclose () {
     clearTimeout(timer)
 
     p.removeListener('assert', onassert)
     p.removeListener('plan', onplan)
     p.removeListener('line', online)
-
-    // Behave like core streams, emit close after error
-    process.nextTick(function () {
-      p.emit('close')
-    })
   }
-
-  return p
 
   function oncomplete (results) {
     if (callback) callback(results)
-
-    // Behave like core streams with autoDestroy
-    p.destroy()
   }
 
   function onassert () {
